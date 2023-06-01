@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
@@ -11,7 +12,11 @@
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <link rel='stylesheet' href='{{ url_for("static", filename="cover.css") }}'>
+
+
 </head>
+
+
 <body class="d-flex h-100 text-center text-bg-dark">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -19,19 +24,23 @@
 
     </header>
 
-    <main class="px-3" style="justify-content:center;">
+    <main class="px-3" style="">
         <h1>Drop your .pdf file here</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
-                       aria-label="Upload">
+                       aria-label="Upload" name="file">
             </div>
-            <label for="title"></label><input type="text" name="title" id="title" class="form-control">
             <input type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-white" value="Convert">
         </form>
 
     </main>
 
+    <div>
+        {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+    </div>
     <footer class="mt-auto text-white-50">
         <p> by potisin@outlook.com </p>
     </footer>
